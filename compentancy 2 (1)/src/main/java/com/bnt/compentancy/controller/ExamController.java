@@ -29,7 +29,7 @@ public class ExamController {
 	public ResponseEntity<Exam> addQuiz(@RequestBody Exam exam){
 		
 		Exam quiz1= service.addQuiz(exam);
-		
+		//this is Exam Controller 
 		return ResponseEntity.ok(quiz1);
 		
 	}
