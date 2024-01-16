@@ -6,13 +6,19 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class Questions {
 
-	@ManyToOne(fetch =FetchType.EAGER)
-	private Exam exam;
+	@ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+	
+	@ManyToOne
+    @JoinColumn(name = "exam_id", nullable = false)
+    private Exam exam;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,17 +37,13 @@ public class Questions {
 		
 	}
 
-
-	public Exam getExam() {
-		return exam;
+	public Category getCategory() {
+		return category;
 	}
 
-
-	public void setExam(Exam exam) {
-		this.exam = exam;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
-
-
 
 	public Long getQuesId() {
 		return quesId;

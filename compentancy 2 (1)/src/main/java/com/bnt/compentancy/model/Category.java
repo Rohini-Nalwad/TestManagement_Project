@@ -1,11 +1,10 @@
 package com.bnt.compentancy.model;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +19,7 @@ public class Category {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long cid;
+	private Long category_id;
 	
 	private String title;
 	
@@ -28,23 +27,27 @@ public class Category {
 	
 	@OneToMany(mappedBy = "category",cascade =CascadeType.ALL)
 	@JsonIgnore
-	private Set<Exam> quizes=new LinkedHashSet<>();
-	
+	private List<Questions> questions=new ArrayList<>();
+
 	public Category() {
-		
-	}
-	
-	public Category(String title, String description) {
-		this.title=title;
-		this.description=description;
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Long getCid() {
-		return cid;
+	public Category(Long category_id, String title, String description, List<Questions> questions) {
+		super();
+		this.category_id = category_id;
+		this.title = title;
+		this.description = description;
+		this.questions = questions;
 	}
 
-	public void setCid(Long cid) {
-		this.cid = cid;
+	public Long getCategory_id() {
+		return category_id;
+	}
+
+	public void setCategory_id(Long category_id) {
+		this.category_id = category_id;
 	}
 
 	public String getTitle() {
@@ -62,6 +65,14 @@ public class Category {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
+	public List<Questions> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(List<Questions> questions) {
+		this.questions = questions;
+	}
+
 	
 }

@@ -1,7 +1,6 @@
 package com.bnt.compentancy.service;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,9 +29,9 @@ public class CategoryServiceimpl implements CategoryService {
 	}
 
 	@Override
-	public Set<Category> getCategory() {
+	public ArrayList<Category> getCategory() {
 		// TODO Auto-generated method stub
-		return new LinkedHashSet<>(this.categoryRepository.findAll());
+		return new ArrayList(this.categoryRepository.findAll());
 	}
 
 	@Override
@@ -45,7 +44,7 @@ public class CategoryServiceimpl implements CategoryService {
 	public void deleteCategory(Long categoryId) {
 		// TODO Auto-generated method stub
 		Category category=new Category();
-		category.setCid(categoryId);
+		category.setCategory_id(categoryId);
 		this.categoryRepository.delete(category);
 		
 	}

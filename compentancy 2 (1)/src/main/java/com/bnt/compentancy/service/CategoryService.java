@@ -1,6 +1,6 @@
 package com.bnt.compentancy.service;
 
-import java.util.Set;
+import java.util.ArrayList;
 
 import com.bnt.compentancy.model.Category;
 
@@ -10,7 +10,7 @@ public interface CategoryService {
 	
 	public Category updateCategory(Category category);
 	
-	public Set<Category> getCategory();
+	public ArrayList<Category> getCategory();
 	
 	public Category getCategory(Long categoryId);
 	

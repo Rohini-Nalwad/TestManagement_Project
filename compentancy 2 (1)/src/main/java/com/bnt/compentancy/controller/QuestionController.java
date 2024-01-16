@@ -69,17 +69,18 @@ public class QuestionController {
 	
 	@GetMapping("/quiz/{qid}")
 	public ResponseEntity<?> getQuestionsQuiz(@PathVariable("qid") Long qid){
+		return null;
 		
 		
-		Exam exam=this.examService.getQuiz(qid);
-		Set<Questions> questionsOfQuiz=exam.getQuestions();
-		List<Questions> list= new ArrayList<Questions>(questionsOfQuiz);
-		
-		if(list.size() > Integer.parseInt(exam.getNumberofQuestions())) {
-			list=list.subList(0, Integer.parseInt(exam.getNumberofQuestions()+1));
-		}
-		Collections.shuffle(list);
-		return ResponseEntity.ok(list);
+		/*
+		 * Exam exam=this.examService.getQuiz(qid); Set<Questions>
+		 * questionsOfQuiz=exam.getQuestions(); List<Questions> list= new
+		 * ArrayList<Questions>(questionsOfQuiz);
+		 * 
+		 * if(list.size() > Integer.parseInt(exam.getNumberofQuestions())) {
+		 * list=list.subList(0, Integer.parseInt(exam.getNumberofQuestions()+1)); }
+		 * Collections.shuffle(list); return ResponseEntity.ok(list);
+		 */
 		
 	}
 	

@@ -1,18 +1,13 @@
 package com.bnt.compentancy.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Exam {
@@ -31,12 +26,8 @@ public class Exam {
 	
 	private boolean active=false;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Category category;
-	
-	@OneToMany(mappedBy = "exam",fetch = FetchType.LAZY,cascade =CascadeType.ALL)
-	@JsonIgnore
-	private Set<Questions> questions=new HashSet<>();
+	@OneToMany(mappedBy = "exam", cascade = CascadeType.ALL)
+    private List<Questions> questions;
 
 	public Exam() {
 		
@@ -90,21 +81,12 @@ public class Exam {
 		this.active = active;
 	}
 
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	public Set<Questions> getQuestions() {
+	public List<Questions> getQuestions() {
 		return questions;
 	}
 
-	public void setQuestions(Set<Questions> questions) {
+	public void setQuestions(List<Questions> questions) {
 		this.questions = questions;
 	}
-	
-	
+
 }
