@@ -1,4 +1,4 @@
-package com.bnt.compentancy.model;
+package com.bnt.compentancy.entity;
 
 import java.util.List;
 

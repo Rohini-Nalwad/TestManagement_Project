@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bnt.compentancy.model.Questions;
-import com.bnt.compentancy.model.Exam;
+import com.bnt.compentancy.entity.Exam;
+import com.bnt.compentancy.entity.Questions;
 import com.bnt.compentancy.service.QuestionService;
 import com.bnt.compentancy.service.ExamService;
 

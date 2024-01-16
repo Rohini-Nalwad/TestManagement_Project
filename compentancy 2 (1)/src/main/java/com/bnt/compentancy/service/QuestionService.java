@@ -2,8 +2,8 @@ package com.bnt.compentancy.service;
 
 import java.util.Set;
 
-import com.bnt.compentancy.model.Questions;
-import com.bnt.compentancy.model.Exam;
+import com.bnt.compentancy.entity.Exam;
+import com.bnt.compentancy.entity.Questions;
 
 public interface QuestionService {
 	

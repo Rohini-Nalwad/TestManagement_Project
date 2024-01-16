@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bnt.compentancy.entity.Role;
 import com.bnt.compentancy.entity.User;
+import com.bnt.compentancy.entity.UserDetail;
 import com.bnt.compentancy.entity.UserRole;
 import com.bnt.compentancy.exception.UserAlreadyExistsException;
-import com.bnt.compentancy.model.UserDetail;
 import com.bnt.compentancy.service.UserService;
 
 @RestController

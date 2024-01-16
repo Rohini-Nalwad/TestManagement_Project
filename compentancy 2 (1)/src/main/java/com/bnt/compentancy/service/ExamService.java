@@ -2,7 +2,7 @@ package com.bnt.compentancy.service;
 
 import java.util.Set;
 
-import com.bnt.compentancy.model.Exam;
+import com.bnt.compentancy.entity.Exam;
 
 public interface ExamService {
 

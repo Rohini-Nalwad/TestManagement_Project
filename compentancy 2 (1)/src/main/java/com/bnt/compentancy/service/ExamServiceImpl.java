@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bnt.compentancy.dao.ExamRepository;
-import com.bnt.compentancy.model.Exam;
+import com.bnt.compentancy.entity.Exam;
 
 
 @Service

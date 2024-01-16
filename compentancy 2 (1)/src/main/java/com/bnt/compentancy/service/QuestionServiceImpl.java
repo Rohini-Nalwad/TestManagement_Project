@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bnt.compentancy.dao.QuestionRepository;
-import com.bnt.compentancy.model.Questions;
-import com.bnt.compentancy.model.Exam;
+import com.bnt.compentancy.entity.Exam;
+import com.bnt.compentancy.entity.Questions;
 
 @Service
 public class QuestionServiceImpl implements QuestionService{

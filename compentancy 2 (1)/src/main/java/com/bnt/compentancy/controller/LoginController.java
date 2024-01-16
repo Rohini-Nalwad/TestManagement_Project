@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bnt.compentancy.entity.LoginRequest;
 import com.bnt.compentancy.entity.User;
-import com.bnt.compentancy.model.UserDetail;
+import com.bnt.compentancy.entity.UserDetail;
 import com.bnt.compentancy.service.UserLoginImpl;
 
 @RestController

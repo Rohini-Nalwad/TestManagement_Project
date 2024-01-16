@@ -2,7 +2,7 @@ package com.bnt.compentancy.service;
 
 import java.util.ArrayList;
 
-import com.bnt.compentancy.model.Category;
+import com.bnt.compentancy.entity.Category;
 
 public interface CategoryService {
 	

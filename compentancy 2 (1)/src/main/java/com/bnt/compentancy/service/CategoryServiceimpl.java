@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bnt.compentancy.dao.CategoryRepository;
-import com.bnt.compentancy.model.Category;
+import com.bnt.compentancy.entity.Category;
 
 
 @Service

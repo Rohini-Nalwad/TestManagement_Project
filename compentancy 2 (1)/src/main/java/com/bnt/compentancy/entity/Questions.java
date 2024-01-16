@@ -1,4 +1,4 @@
-package com.bnt.compentancy.model;
+package com.bnt.compentancy.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

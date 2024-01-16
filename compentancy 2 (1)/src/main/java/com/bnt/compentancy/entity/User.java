@@ -1,6 +1,5 @@
 package com.bnt.compentancy.entity;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,17 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import com.bnt.compentancy.model.Authority;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
 @Entity
 @Table(name = "UserDetails")
-public class User implements UserDetails{
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -138,42 +133,29 @@ public class User implements UserDetails{
 				+ "]";
 	}
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-        
-		Set<Authority> set = new HashSet<>();
-		this.userRoles.forEach(userRole ->{
-			set.add(new Authority(userRole.getRole().getRoleName()));
-		});
-		
+	/*
+	 * @Override public Collection<? extends GrantedAuthority> getAuthorities() {
+	 * 
+	 * Set<Authority> set = new HashSet<>(); this.userRoles.forEach(userRole ->{
+	 * set.add(new Authority(userRole.getRole().getRoleName())); });
+	 * 
+	 * 
+	 * return set; }
+	 */
 
-		return set;
-	}
-
-	@Override
-	public String getUsername() {
-		// TODO Auto-generated method stub
-		return this.email;
-	}
-
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
+	/*
+	 * @Override public String getUsername() { // TODO Auto-generated method stub
+	 * return this.email; }
+	 * 
+	 * @Override public boolean isAccountNonExpired() { // TODO Auto-generated
+	 * method stub return true; }
+	 * 
+	 * @Override public boolean isAccountNonLocked() { // TODO Auto-generated method
+	 * stub return true; }
+	 * 
+	 * @Override public boolean isCredentialsNonExpired() { // TODO Auto-generated
+	 * method stub return true; }
+	 */
 	
 	
 
