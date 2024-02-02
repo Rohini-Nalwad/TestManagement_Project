@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.entity.Category;
 import com.entity.Question;
 import com.exception.QuestionNotFoundException;
+import com.service.CategoryService;
 import com.service.QuestionService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +35,9 @@ public class QuestionController {
 
 	@Autowired
 	private QuestionService questionService;
+	
+	@Autowired
+    private CategoryService categoryService;
 	
 	@GetMapping
 	public List<Question> getAllQuestions() {
@@ -51,11 +56,39 @@ public class QuestionController {
 		}
 	}
 
+//	@PostMapping
+//	public Question createQuestion(@RequestBody Question question) {
+//		log.info("Creating question: {}", question);
+//		return questionService.saveQuestion(question);
+//	}
+	
 	@PostMapping
 	public Question createQuestion(@RequestBody Question question) {
-		log.info("Creating question: {}", question);
-		return questionService.saveQuestion(question);
+	    log.info("Creating question: {}", question);
+
+	    // Retrieve the category by title
+	    Category category = categoryService.getCategoryByTitle(question.getCategoryTitle());
+
+	    // Create a new question with the retrieved category
+	    Question questionRequest = new Question();
+	    questionRequest.setContent(question.getContent());
+	    questionRequest.setOption1(question.getOption1());
+	    questionRequest.setOption2(question.getOption2());
+	    questionRequest.setOption3(question.getOption3());
+	    questionRequest.setOption4(question.getOption4());
+	    questionRequest.setAnswer(question.getAnswer());
+	    questionRequest.setMarks(question.getMarks());
+	    questionRequest.setCategoryTitle(question.getCategoryTitle());  // Set categoryTitle for transient field
+	    questionRequest.setCategory(category);
+	    
+	    Question savedQuestion = questionService.saveQuestion(questionRequest);
+
+	    // Clear transient fields to avoid being included in the response
+	    savedQuestion.setCategoryTitle(null);
+
+	    return savedQuestion;
 	}
+
 	
 	@PutMapping("/{id}")
 	public Question updateQuestion(@PathVariable Long id, @RequestBody Question question) {

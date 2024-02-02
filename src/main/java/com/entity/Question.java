@@ -2,6 +2,8 @@ package com.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,12 +25,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(value = {"categoryTitle"}, allowSetters = true)
 public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "question_id")
-    private Long QuestionId;
+    private Long questionId;
 
     private String content;
     private String option1;
@@ -37,14 +40,15 @@ public class Question {
     private String option4;
     private String answer;
     private String marks;
-
+    private String categoryTitle;
+    
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToMany
-    @JoinTable(name = "question_test", joinColumns = @JoinColumn(name = "question_id"), inverseJoinColumns = @JoinColumn(name = "test_id"))
-    private List<TestManagement> tests;
-
-	
+    
+    @ManyToMany  
+    	@JoinTable(name = "question_test",joinColumns = @JoinColumn(name = "question_id"),inverseJoinColumns = @JoinColumn(name = "test_id"))   
+    	private List<TestManagement> tests;
+  
 }

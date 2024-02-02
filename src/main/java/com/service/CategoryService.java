@@ -1,6 +1,7 @@
 package com.service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import com.entity.Category;
 
@@ -10,13 +11,15 @@ public interface CategoryService {
 
 	ArrayList<Category> getAllCatogory();
 
-	Category getCategoryById(Long categoryId);
-
 	Category updateCategory(Category category);
 
 	void deleteCategory(Long categoryId);
 
 	boolean exists(Long categoryId);
+
+	Category getCategoryByTitle(String categoryTitle);
+
+	Category getCategoryById(Long categoryId);
 
 	
 

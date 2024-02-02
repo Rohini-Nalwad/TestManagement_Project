@@ -63,4 +63,11 @@ public class CategoryServiceImple implements CategoryService {
 		return categoryRepository.existsById(categoryId);
 	}
 
+
+	@Override
+	public Category getCategoryByTitle(String categoryTitle) {
+	    return categoryRepository.findByTitle(categoryTitle)
+	            .orElseThrow(() -> new CategoryNotFoundException("Category with title " + categoryTitle + " not found"));
+	}
+
 }
