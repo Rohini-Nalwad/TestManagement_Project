@@ -6,8 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -17,25 +15,25 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
+@Table(name = "test")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name = "tests")
-public class TestManagement {
+public class Tests {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long testId;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long testId;
+	private String title;
+	private String description;
+	private int maxMarks;
+	private int numberofQuestions;
 
-    private String title;
-    private String description;
-    private int maxMarks;
-    private int numberofQuestions;
+	private boolean active = false;
 
-    private boolean active = false;
-
-    @ManyToMany(mappedBy = "tests")
-	private List<Question> questions;
+	 @ManyToMany(mappedBy = "tests")
+		private List<Question> questions;
+	
 }
