@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.entity.TestManagement;
+import com.entity.Tests;
 import com.repository.TestRepository;
 import com.service.TestService;
 
@@ -17,22 +17,22 @@ public class TestServiceImpl implements TestService {
 	private TestRepository repository;
 
 	@Override
-	public TestManagement addTest(TestManagement exam) {
+	public Tests addTest(Tests exam) {
 		return repository.save(exam);
 	}
 
 	@Override
-	public TestManagement updateTest(TestManagement exam) {
+	public Tests updateTest(Tests exam) {
 		return repository.save(exam);
 	}
 
 	@Override
-	public List<TestManagement> getTest() {
+	public List<Tests> getTest() {
 		return new ArrayList<>(repository.findAll());
 	}
 
 	@Override
-	public TestManagement getTestById(Long testId) {
+	public Tests getTestById(Long testId) {
 		return repository.findById(testId).get();
 	}
 

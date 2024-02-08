@@ -40,7 +40,6 @@ public class Question {
     private String option4;
     private String answer;
     private String marks;
-    private String categoryTitle;
     
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -49,6 +48,6 @@ public class Question {
     
     @ManyToMany  
     	@JoinTable(name = "question_test",joinColumns = @JoinColumn(name = "question_id"),inverseJoinColumns = @JoinColumn(name = "test_id"))   
-    	private List<TestManagement> tests;
+    	private List<Tests> tests;
   
 }

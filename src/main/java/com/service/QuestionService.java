@@ -3,8 +3,9 @@ package com.service;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Optional;
 
-
+import com.entity.Category;
 import com.entity.Question;
 
 
@@ -20,5 +21,9 @@ public interface QuestionService {
     void deleteQuestion(Long id);
 
     List<Question> importQuestionsFromExcel(InputStream excelInputStream) throws IOException;
+    
+    Optional<Category> findByTitle(String title);
+
+	
 
 }

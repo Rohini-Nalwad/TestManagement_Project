@@ -56,38 +56,30 @@ public class QuestionController {
 		}
 	}
 
-//	@PostMapping
-//	public Question createQuestion(@RequestBody Question question) {
-//		log.info("Creating question: {}", question);
-//		return questionService.saveQuestion(question);
-//	}
-	
+
 	@PostMapping
 	public Question createQuestion(@RequestBody Question question) {
 	    log.info("Creating question: {}", question);
-
-	    // Retrieve the category by title
-	    Category category = categoryService.getCategoryByTitle(question.getCategoryTitle());
-
-	    // Create a new question with the retrieved category
-	    Question questionRequest = new Question();
-	    questionRequest.setContent(question.getContent());
-	    questionRequest.setOption1(question.getOption1());
-	    questionRequest.setOption2(question.getOption2());
-	    questionRequest.setOption3(question.getOption3());
-	    questionRequest.setOption4(question.getOption4());
-	    questionRequest.setAnswer(question.getAnswer());
-	    questionRequest.setMarks(question.getMarks());
-	    questionRequest.setCategoryTitle(question.getCategoryTitle());  // Set categoryTitle for transient field
-	    questionRequest.setCategory(category);
 	    
-	    Question savedQuestion = questionService.saveQuestion(questionRequest);
+	    Category category = categoryService.getCategoryByTitle(question.getCategory().getTitle());
+	    		//.orElseThrow(() -> new CategoryNotFoundException("Category not found"));
+	 
+			Category catgorys= new Category();
+			catgorys.setCategoryId(category.getCategoryId());
+	 
+			Question questionRequest = new Question();
+			questionRequest.setContent(question.getContent());
+			questionRequest.setOption1(question.getOption1());
+			questionRequest.setOption2(question.getOption2());
+			questionRequest.setOption3(question.getOption3());
+			questionRequest.setOption4(question.getOption4());
+			questionRequest.setAnswer(question.getAnswer());
+			questionRequest.setMarks(question.getMarks());
+			questionRequest.setCategory(catgorys);
+			return questionService.saveQuestion(questionRequest);
+		}
+	 
 
-	    // Clear transient fields to avoid being included in the response
-	    savedQuestion.setCategoryTitle(null);
-
-	    return savedQuestion;
-	}
 
 	
 	@PutMapping("/{id}")

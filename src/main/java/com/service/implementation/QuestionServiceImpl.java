@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -14,6 +15,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.entity.Category;
 import com.entity.Question;
 import com.exception.QuestionNotFoundException;
 import com.repository.QuestionRepository;
@@ -86,4 +88,10 @@ public class QuestionServiceImpl implements QuestionService {
         cell.setCellType(CellType.STRING);
         return cell.getStringCellValue();
     }
+
+	@Override
+	public Optional<Category> findByTitle(String title) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
 }
