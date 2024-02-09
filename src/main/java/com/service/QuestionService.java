@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.entity.Category;
 import com.entity.Question;
 
@@ -20,9 +22,11 @@ public interface QuestionService {
 
     void deleteQuestion(Long id);
 
-    List<Question> importQuestionsFromExcel(InputStream excelInputStream) throws IOException;
-    
-    Optional<Category> findByTitle(String title);
+//    List<Question> importQuestionsFromExcel(InputStream excelInputStream) throws IOException;
+//    
+//    Optional<Category> findByTitle(String title);
+
+	void importQuestionsFromExcel(List<MultipartFile> multipartFiles) throws IOException;
 
 	
 

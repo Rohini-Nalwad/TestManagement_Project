@@ -100,18 +100,30 @@ public class QuestionController {
 	}
 	
 
+//	@PostMapping("/import")
+//    public ResponseEntity<List<Question>> importQuestions(@RequestParam("file") MultipartFile file) {
+//        try {
+//            log.info("Importing questions from Excel file");
+//            InputStream excelInputStream = file.getInputStream();
+//            List<Question> importedQuestions = questionService.importQuestionsFromExcel(excelInputStream);
+//            return ResponseEntity.ok(importedQuestions);
+//        } catch (IOException e) {
+//            log.error("Error importing questions from Excel file: {}", e.getMessage());
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+//        }
+//    }
+// 
+	
 	@PostMapping("/import")
-    public ResponseEntity<List<Question>> importQuestions(@RequestParam("file") MultipartFile file) {
-        try {
-            log.info("Importing questions from Excel file");
-            InputStream excelInputStream = file.getInputStream();
-            List<Question> importedQuestions = questionService.importQuestionsFromExcel(excelInputStream);
-            return ResponseEntity.ok(importedQuestions);
-        } catch (IOException e) {
-            log.error("Error importing questions from Excel file: {}", e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        }
-    }
- 
+	public ResponseEntity<String> importExcelToDatabase(@RequestParam("file") List<MultipartFile> files) {
+	    try {
+	        log.info("Importing questions from Excel file");
+	        questionService.importQuestionsFromExcel(files);
+	        return ResponseEntity.ok("Questions imported successfully.");
+	    } catch (IOException e) {
+	        log.error("Error importing questions from Excel file: {}", e.getMessage());
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to import questions.");
+	    }
+	}
 } 
 	 

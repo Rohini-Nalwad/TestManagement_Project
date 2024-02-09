@@ -33,7 +33,8 @@ import lombok.ToString;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Category {
 
-    @Id
+    
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
     private Long categoryId;
@@ -48,4 +49,9 @@ public class Category {
     @JsonIgnore
     private List<Question> questions;
 
-}
+	public Category(String title) {
+		super();
+		this.title = title;
+	}
+    
+   }
