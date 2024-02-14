@@ -19,18 +19,6 @@ import java.util.Optional;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-//	@Autowired
-//  private RestTemplate restTemplate;
-//
-//  // URL of the testManagement microservice
-//  private static final String TEST_MANAGEMENT_URL = "http://testmanagement-service/api/v1/tests";
-//
-//  public Tests[] getTestsForEmployee(Long employeeId) {
-//      // Make an HTTP GET request to the testManagement microservice
-//      Tests[] tests = restTemplate.getForObject(TEST_MANAGEMENT_URL + "?employeeId={employeeId}", Tests[].class, employeeId);
-//      return tests;
-//  }
-	
  @Autowired
  private EmployeeRepository employeeRepository;
 
@@ -44,7 +32,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
  @Override
  public Employee login(String email, String password) {
-     // Retrieve the employee from the database based on the provided email
      Optional<Employee> optionalEmployee = employeeRepository.findByEmail(email);
      
      if (optionalEmployee.isPresent()) {
@@ -54,11 +41,9 @@ public class EmployeeServiceImpl implements EmployeeService {
              
              return employee;
          } else {
-             // Passwords don't match, throw an exception or return null
              throw new InvalidCredentialsException("Invalid email or password");
          }
      } else {
-         // Employee with the provided email doesn't exist, throw an exception or return null
          throw new EmployeeNotFoundException("Employee with email '" + email + "' not found");
      }
  }

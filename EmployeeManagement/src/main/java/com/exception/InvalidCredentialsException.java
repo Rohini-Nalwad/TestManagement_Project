@@ -1,4 +1,3 @@
-// InvalidCredentialsException.java
 package com.exception;
 
 public class InvalidCredentialsException extends RuntimeException {

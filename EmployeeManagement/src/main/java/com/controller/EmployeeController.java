@@ -63,19 +63,7 @@ public class EmployeeController {
         employeeService.deleteEmployee(employeeId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    
-    @PostMapping("/assign-test/{employeeId}/{testId}")
-    public ResponseEntity<String> assignTestToEmployee(@PathVariable("employeeId") Long employeeId, @PathVariable("testId") Long testId) {
-
-        Employee employee = employeeService.getEmployeeById(employeeId);
-        Tests test = testService.getTestById(testId);
-        
-        employee.getAssignedTests().add(test);
-
-        employeeService.updateEmployee(employee);
-
-        return ResponseEntity.ok("Test assigned to employee successfully");
-    }
 }
+    
 
 
